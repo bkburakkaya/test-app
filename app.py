@@ -1,4 +1,5 @@
 from flask import Flask
+from helpers.version_helper import VersionHelper
 
 app = Flask(__name__)
 
@@ -10,9 +11,7 @@ def welcome():
 
 @app.route('/version', methods=['GET'])
 def version():
-    version_object = {
-        'version': 1.0
-    }
+    version_object = VersionHelper.get_version()
     return version_object
 
 
