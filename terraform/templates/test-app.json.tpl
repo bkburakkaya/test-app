@@ -8,9 +8,9 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/cb-app",
+          "awslogs-group": "${logs-group}",
           "awslogs-region": "${aws_region}",
-          "awslogs-stream-prefix": "ecs"
+          "awslogs-stream-prefix": "${logs-steam}"
         }
     },
     "portMappings": [
