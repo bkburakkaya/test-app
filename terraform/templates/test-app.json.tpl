@@ -8,9 +8,9 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "${logs-group}",
+          "awslogs-group": "${log-group}",
           "awslogs-region": "${aws_region}",
-          "awslogs-stream-prefix": "${logs-steam}"
+          "awslogs-stream-prefix": "${log-stream}"
         }
     },
     "portMappings": [

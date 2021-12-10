@@ -9,7 +9,7 @@ resource "aws_appautoscaling_target" "target" {
 
 # Automatically scale capacity up by one
 resource "aws_appautoscaling_policy" "up" {
-  name               = var.app_name + "_scale_up"
+  name               = "${var.app_name}_scale_up"
   service_namespace  = "ecs"
   resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
@@ -30,7 +30,7 @@ resource "aws_appautoscaling_policy" "up" {
 
 # Automatically scale capacity down by one
 resource "aws_appautoscaling_policy" "down" {
-  name               = var.app_name + "_scale_down"
+  name               = "${var.app_name}_scale_down"
   service_namespace  = "ecs"
   resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
