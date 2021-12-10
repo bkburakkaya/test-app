@@ -1,8 +1,4 @@
 
-output "alb_hostname" {
-  value = aws_alb.main.dns_name
-}
-
-output "public_ip" {
-  value = aws_eip.gw[1].public_ip
+output "lb_hostname" {
+  value = "http://${aws_alb.main.dns_name}"
 }
