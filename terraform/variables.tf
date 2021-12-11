@@ -9,12 +9,12 @@ variable "aws_region" {
 
 variable "ecs_task_execution_role_name" {
   description = "ECS task execution role name"
-  default = "myEcsTaskExecutionRole"
+  default = "TestAppEcsTaskExecutionRole"
 }
 
 variable "ecs_auto_scale_role_name" {
   description = "ECS auto scale role Name"
-  default = "myEcsAutoScaleRole"
+  default = "TestAppEcsAutoScaleRole"
 }
 
 variable "asg_min_desired_capacity" {
@@ -27,10 +27,14 @@ variable "asg_max_desired_capacity" {
   default = 3
 }
 
+variable "route53_domain" {
+  description = "Main domain name"
+  default     = "burakkaya.com"
+}
 
 variable "cloud_watch_log_group" {
   description = "Cloud Watch Log Group Name"
-  default = "/ecs/test-app"
+  default = "test-app"
 }
 variable "cloud_watch_log_stream" {
   description = "Cloud Watch Log Stream Name"
