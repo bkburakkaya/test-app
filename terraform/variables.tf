@@ -41,9 +41,24 @@ variable "cloud_watch_log_stream" {
   default =  "test-app-log-stream"
 }
 
+variable "vpc_cidr_block" {
+  description = "App VPC CIDR Block"
+  default =  "172.17.0.0/16"
+}
+
 variable "az_count" {
-  description = "Number of AZs to cover in a given region"
+  description = "Number of Availability Zones to cover in a given region"
   default     = "2"
+}
+
+variable "alb_protocol" {
+  description = "Auto Load Balancer Protocol exposed"
+  default     = "HTTP"
+}
+
+variable "alb_port" {
+  description = "Auto Load Balancer Port exposed"
+  default     = 80
 }
 
 variable "app_image" {
