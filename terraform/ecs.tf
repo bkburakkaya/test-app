@@ -1,5 +1,9 @@
 resource "aws_ecs_cluster" "main" {
   name = "${var.app_name}-cluster"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 data "template_file" "test_app" {
@@ -24,6 +28,10 @@ resource "aws_ecs_task_definition" "app" {
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
   container_definitions    = data.template_file.test_app.rendered
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_ecs_service" "main" {
@@ -43,6 +51,10 @@ resource "aws_ecs_service" "main" {
     target_group_arn = aws_alb_target_group.app.id
     container_name   = var.app_name
     container_port   = var.app_port
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 
   depends_on = [aws_alb_listener.front_end, aws_iam_role_policy_attachment.ecs_task_execution_role]
