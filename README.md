@@ -47,9 +47,10 @@ Replace the path with yours, and change the tag name as desired.
     - AWSCodeDeployRoleForECS
     - AWSElasticBeanstalkRoleECS
     - AmazonRoute53FullAccess
-    
-- Go back to the OS Terminal and change directory to **project_path/terraform**.
-- Edit variables.tf file to edit variables for deployment.
+- Open OS Terminal.
+- Add Access Key and Secret Key in a file which specified by AWS in **$HOME/.aws/credential**
+- Change directory to **project_path/terraform**.
+- Edit variables.tf file to edit variables for deployment. All variables have a description.
 - Init directory for Terraform;
 `terraform init`
 - Plan the action on Terraform;
@@ -63,10 +64,10 @@ Replace the path with yours, and change the tag name as desired.
 
 This app shows the updated/current version of itself by HTTP Rest API.
 
-**HTTP Type**: POST
-**Authentication**: None
-**URL Slag**: /version
-**Response Body**:
+- **HTTP Type**: POST
+- **Authentication**: None
+- **URL Slag**: /version
+- **Response Body**:
 {
     "version": "STRING"
 }
