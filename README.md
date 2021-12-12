@@ -28,18 +28,44 @@ http://0.0.0.0:3000/
 
 ## Deploy to AWS ECS Fargate with Terraform (Installation)
 
-- 
--
+**Pre-Requirements**: Docker, AWS Account, AWS Access Key-Secret Key
+- Open the OS terminal.
+- Go to project / application main path.
+- Create a image for the application in Docker;
+`docker build --tag test-app .`
+- Push the image that is created newly to Docker Hub (Container Image Library); 
+Replace the path with yours, and change the tag name as desired.
+`docker push burakkaya28/test-app:latest`
+- Create an API user on AWS with the following permissions; (**Keep Access Key-Secret Key data**)
+    - IAMFullAccess
+    - AutoScalingFullAccess
+    - ElasticLoadBalancingFullAccess
+    - CloudWatchFullAccess
+    - AmazonECS_FullAccess
+    - AmazonECSTaskExecutionRolePolicy
+    - AmazonEC2FullAccess
+    - AWSCodeDeployRoleForECS
+    - AWSElasticBeanstalkRoleECS
+    - AmazonRoute53FullAccess
+    
+- Go back to the OS Terminal and change directory to **project_path/terraform**.
+- Edit variables.tf file to edit variables for deployment.
+- Init directory for Terraform;
+`terraform init`
+- Plan the action on Terraform;
+`terraform plan`
+- Apply the action on Terraform;
+`terraform apply`
+- Terraform will provide an output that shows domain name of the service which deployed AWS ECS Fergate by Route53 service.
+- That's it!
+
 ## Usage
 
 This app shows the updated/current version of itself by HTTP Rest API.
 
 **HTTP Type**: POST
-
 **Authentication**: None
-
 **URL Slag**: /version
-
 **Response Body**:
 {
     "version": "STRING"
